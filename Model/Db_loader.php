@@ -6,9 +6,9 @@ class Db_loader
     public function openConnection()
     {
         // No bugs in this function, just use the right credentials.
-        $dbhost = "DB_HOST";
-        $dbuser = "DB_USER";
-        $dbpass = "DB_PASS";
+        $dbhost = DB_HOST;
+        $dbuser = DB_USER;
+        $dbpass = DB_PASS;
         $db = "crud_db";
 
         $driverOptions = [
