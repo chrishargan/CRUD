@@ -1,0 +1,31 @@
+:root {
+    --gradient: linear-gradient(
+            45deg,
+            #02c7f8,
+            #025468,
+            #297fe8,
+            #845ec2,
+            #d65db1,
+            #ff6f91,
+            #ff9671,
+            #ffc75f,
+            #f9f871
+    );
+}
+
+body {
+    background-image: var(--gradient);
+    background-repeat: no-repeat;
+    background-size: 400%;
+    color: whitesmoke;
+    animation: bg-animation 10s infinite alternate;
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: left
+    }
+    100% {
+        background-position: right;
+    }
+}
