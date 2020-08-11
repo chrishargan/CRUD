@@ -6,7 +6,6 @@ class ClassController
     public function render(array $GET, array $POST)
     {
         if(!isset($POST['classId'])){
-            echo "in progress";
             $classGroup = new Class_loader();
             $classes = $classGroup->fetchClasses();
 

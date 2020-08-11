@@ -1,4 +1,4 @@
-<?php include 'includes/footer.php'; ?>
+<?php require 'includes/header.php'; ?>
 <a href="index.php">Back to Homepage</a>
 <br>
 <form action="index.php" method="POST">
@@ -22,3 +22,4 @@
     }
     ?>
 </table>
+<?php include 'includes/footer.php'; ?>

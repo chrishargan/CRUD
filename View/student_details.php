@@ -1,4 +1,4 @@
-<?php include 'includes/footer.php'; ?>
+<?php require 'includes/header.php'; ?>
 <a href="index.php">Back to Homepage</a>
 <br>
 <table>
@@ -13,3 +13,4 @@
         <td><?php echo $class['Name']; ?></td>
     </tr>
 </table>
+<?php include 'includes/footer.php'; ?>
