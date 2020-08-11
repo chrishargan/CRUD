@@ -1,27 +1,86 @@
 <?php
+declare(strict_types=1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+define("DB_HOST","localhost");
+define("DB_USER","becode");
+define("DB_PASS","Skeeterpup61!");
+
+require 'Controller/Classgroup_Controller.php';
+require 'View/includes/header.php';
 require 'Model/Db_loader.php';
+require 'Model/ClassGroup.php';
 
-function openConnection()
-{
-    // No bugs in this function, just use the right credentials.
-    $dbhost = "localhost";
-    $dbuser = "becode";
-    $dbpass = "becode1993";
-    $db = "crud_db";
+//require 'View/homepage.php';
 
-    $driverOptions = [
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ];
+?>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    return new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
-}
+        <title>Who's at BeCode</title>
+    </head>
+    <body>
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Class</label>
+            <input type="text" class="form-control" name="className"  id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Campus</label>
+            <input type="text" class="form-control" name="location"  id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Teacher</label>
+            <input type="text" class="form-control" name="teacherName"  id="exampleFormControlInput1" placeholder="">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Add">
+        <input class="btn btn-primary" type="submit" value="View">
+        <input class="btn btn-primary" type="submit" value="Edit">
+        <input class="btn btn-primary" type="submit" value="Delete">
 
-$name = 'Koen';
-$email = 'koen@becode.org';
-$pdo = openConnection();
-$statement = $pdo->prepare('INSERT INTO Teachers (name, email) VALUES (:name, :email)');
-$statement->bindValue('name', $name);
-$statement->bindValue('email', $email);
-$statement->execute();
+
+
+
+
+
+    <pre>
+    <?php
+        $control = new ClassGroup_controller();
+        $control->render($_GET, $_POST);
+
+
+        if (isset($_POST['Add'])){
+            if (!empty($_POST['className'])) {
+                $className = $_POST['className'];
+                $newClass = new ClassGroup();
+                $newClass->setName($className);
+            }
+        }
+
+        $test = new ClassGroup();
+        var_dump($test);
+
+
+    ?>
+</pre>
+
+
+<hr>
+    </body>
+    </html>
+
+
+
+
+
+
+<?php
+require 'View/includes/footer.php';
+?>
